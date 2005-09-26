@@ -4,7 +4,7 @@ use Module::Build;
 my $build = Module::Build
   ->new( module_name => "Acme::Magic8Ball",
          license     => 'perl',
-		 requires => { 'Test::More' => 0 },
+         requires => { 'Test::More' => 0 },
          create_makefile_pl => 'traditional',
        );
 

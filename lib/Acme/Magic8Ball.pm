@@ -6,7 +6,8 @@ use vars qw($VERSION @EXPORT_OK);
 
 
 
-$VERSION   = "1.0"; # are we ever going to need enhancements?
+# are we ever going to need enhancements? Apparently yes :(
+$VERSION   = "1.1"; 
 @EXPORT_OK = qw(ask);
 
 =head1 NAME
@@ -15,8 +16,8 @@ Acme::Magic8Ball - ask the Magic 8 Ball a question
 
 =head1 SYNOPSIS
 
-	use Acme::Magic8Ball qw(ask);
-	my $reply = ask("Is this module any use whatsoever?");
+    use Acme::Magic8Ball qw(ask);
+    my $reply = ask("Is this module any use whatsoever?");
 
 =head1 DESCRIPTION
 
@@ -29,12 +30,14 @@ This is an almost utterly pointless module. But I needed it. So there.
 Ask and ye shall receive!
 
 =cut
-	
+    
 sub ask {
-	my $question = shift || return "You must ask a question!";
+    my $question = shift || return "You must ask a question!";
 
-	my @answers = map { chomp; $_ } <DATA>;
-	return $answers[rand($#answers)];
+    my $pos = tell DATA;
+    my @answers = map { chomp; $_ } <DATA>;
+    seek DATA, $pos,0;
+    return $answers[rand($#answers)];
 }
 
 =head1 AUTHOR

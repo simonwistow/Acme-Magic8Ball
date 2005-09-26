@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Acme-Magic8Ball
-version: 1.0
+version: 1.1
 author:
   - Simon Wistow <simon@thegestalt.org>
 abstract: ask the Magic 8 Ball a question
@@ -10,5 +10,5 @@ requires:
 provides:
   Acme::Magic8Ball:
     file: lib/Acme/Magic8Ball.pm
-    version: 1.0
+    version: 1.1
 generated_by: Module::Build version 0.25
