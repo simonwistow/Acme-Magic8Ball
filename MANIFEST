@@ -1,0 +1,6 @@
+MANIFEST
+MANIFEST.SKIP
+Build.PL
+test.pl
+lib/Acme/Magic8Ball.pm
+META.yml
