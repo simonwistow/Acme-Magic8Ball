@@ -1,6 +1,8 @@
 MANIFEST
 MANIFEST.SKIP
 Build.PL
+Makefile.PL
 test.pl
 lib/Acme/Magic8Ball.pm
 META.yml
+Changes
