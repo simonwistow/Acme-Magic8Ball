@@ -7,7 +7,7 @@ use vars qw($VERSION @EXPORT_OK);
 
 
 # are we ever going to need enhancements? Apparently yes :(
-$VERSION   = "1.1"; 
+$VERSION   = "1.2"; 
 @EXPORT_OK = qw(ask);
 
 =head1 NAME
@@ -37,7 +37,7 @@ sub ask {
     my $pos = tell DATA;
     my @answers = map { chomp; $_ } <DATA>;
     seek DATA, $pos,0;
-    return $answers[rand($#answers)];
+    return $answers[rand @answers ];
 }
 
 =head1 AUTHOR
