@@ -25,18 +25,23 @@ This is an almost utterly pointless module. But I needed it. So there.
 
 =head1 METHODS
 
-=head2 ask <question>
+=head2 ask <question> [answers]
 
 Ask and ye shall receive!
+
+If you don't pass in an array of answers it will use the traditional ones.
 
 =cut
     
 sub ask {
     my $question = shift || return "You must ask a question!";
+    my @answers  = @_;
 
-    my $pos = tell DATA;
-    my @answers = map { chomp; $_ } <DATA>;
-    seek DATA, $pos,0;
+    unless (@answers) {
+        my $pos = tell DATA;
+        @answers = map { chomp; $_ } <DATA>;
+        seek DATA, $pos,0;
+    }
     return $answers[rand @answers ];
 }
 
