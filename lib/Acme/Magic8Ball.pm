@@ -1,14 +1,25 @@
 package Acme::Magic8Ball;
 
-use Exporter;
-use base qw(Exporter);
-use vars qw($VERSION @EXPORT_OK);
+use strict;
+
+require Exporter;
+use vars qw($VERSION $CONSISTENT @EXPORT_OK @ISA);
 
 
 
 # are we ever going to need enhancements? Apparently yes :(
-$VERSION   = "1.3"; 
-@EXPORT_OK = qw(ask);
+$VERSION    = "1.3"; 
+$CONSISTENT = 0;
+@ISA        = qw(Exporter);
+@EXPORT_OK  = qw(ask);
+
+use Data::Dumper;
+
+sub import {
+    $CONSISTENT = grep { /^:consistent$/ } @_;
+    @_ = grep { !/^:consistent$/ } @_;
+    goto &Exporter::import;
+}
 
 =head1 NAME
 
@@ -18,7 +29,18 @@ Acme::Magic8Ball - ask the Magic 8 Ball a question
 
     use Acme::Magic8Ball qw(ask);
     my $reply = ask("Is this module any use whatsoever?");
+    
+... you can also pass in your own list of answers ...
 
+    my $reply = ask("What should the next bit be?", 0, 1); # reply will always be 0 or 1
+
+... or make answers consistent ...
+
+    use Acme::Magic8Ball qw(ask :consistent);
+    for (0..1000) {
+        my $reply = ask("Is this module any use whatsoever?"); # reply will always be the same
+    }
+    
 =head1 DESCRIPTION
 
 This is an almost utterly pointless module. But I needed it. So there.
@@ -42,7 +64,11 @@ sub ask {
         @answers = map { chomp; $_ } <DATA>;
         seek DATA, $pos,0;
     }
-    return $answers[rand @answers ];
+    return $answers[rand @answers] unless $CONSISTENT;
+
+    my $hashcode = 0;                                                                                                                                       
+    $hashcode   += ord($_) foreach split(//, $question);                                                                                                        
+    return $answers[$hashcode % scalar(@answers) - 1];
 }
 
 =head1 AUTHOR
