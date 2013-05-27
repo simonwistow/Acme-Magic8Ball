@@ -7,7 +7,7 @@ use vars qw($VERSION @EXPORT_OK);
 
 
 # are we ever going to need enhancements? Apparently yes :(
-$VERSION   = "1.2"; 
+$VERSION   = "1.3"; 
 @EXPORT_OK = qw(ask);
 
 =head1 NAME
@@ -49,6 +49,12 @@ Simon Wistow <simon@thegestalt.org>
 Copyright 2005, Simon Wistow
 
 Distributed under the same terms as Perl itself.
+
+=head1 DEVELOPMENT
+
+You can get the latest version from 
+
+https://github.com/simonwistow/Acme-Magic8Ball
 
 =head1 SEE ALSO
 
