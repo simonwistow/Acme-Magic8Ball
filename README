@@ -1,0 +1,32 @@
+NAME
+    Acme::Magic8Ball - ask the Magic 8 Ball a question
+
+SYNOPSIS
+        use Acme::Magic8Ball qw(ask);
+        my $reply = ask("Is this module any use whatsoever?");
+
+DESCRIPTION
+    This is an almost utterly pointless module. But I needed it. So there.
+
+METHODS
+  ask <question>
+    Ask and ye shall receive!
+
+AUTHOR
+    Simon Wistow <simon@thegestalt.org>
+
+COPYING
+    Copyright 2005, Simon Wistow
+
+    Distributed under the same terms as Perl itself.
+
+DEVELOPMENT
+    You can get the latest version from
+
+    https://github.com/simonwistow/Acme-Magic8Ball
+
+SEE ALSO
+    The 8 Ball FAQ - http://8ball.ofb.net/faq.html
+
+    Mattel (who own the 8 Ball) - http://www.mattel.com
+
