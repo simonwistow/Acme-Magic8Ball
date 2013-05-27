@@ -1,8 +1,11 @@
+Changes
+lib/Acme/Magic8Ball.pm
+Makefile.PL
 MANIFEST
 MANIFEST.SKIP
-Build.PL
-Makefile.PL
-test.pl
-lib/Acme/Magic8Ball.pm
+META.json
 META.yml
-Changes
+README
+t/01basic.t
+t/02supplied_answers.t
+t/03consistent_answers.t
